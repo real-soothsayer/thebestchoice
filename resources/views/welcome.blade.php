@@ -79,7 +79,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Bienvenue sur the best choice
+                    Bienvenue sur the best choice dispo
                 </div>
                 <div class="m-b-md">
                     Disponible bientôt
