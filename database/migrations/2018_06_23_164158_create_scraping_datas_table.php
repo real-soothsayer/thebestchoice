@@ -19,6 +19,7 @@ class CreateScrapingDatasTable extends Migration
             $table->timestamp('extraction_date')->useCurrent();
             $table->string('name', 500);
             $table->string('categorie', 100);
+            $table->string('vendeur', 100);
             $table->string('website', 100);
             $table->string('url', 500);
             $table->bigInteger('price');
