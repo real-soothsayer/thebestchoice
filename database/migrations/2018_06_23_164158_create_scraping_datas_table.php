@@ -28,11 +28,13 @@ class CreateScrapingDatasTable extends Migration
             $table->boolean('availability')->nullable();
             $table->string('image', 500);
             $table->string('image_big', 500)->nullable();
-            $table->string('status', 1)->default('T')->comment("T: Temporaire, lorsqu'on est encore en train d'insérer, P: principal: scraping terminé, peut être utilisé pour la recherche");
+            $table->string('status', 1)->default('T')->comment("T: Temporaire, lorsqu'on est encore en train d'insérer, P: principal: scraping terminé, peut être utilisé pour la recherche, S: Supprimé");
             $table->timestamps();
             $table->string('deleted', 1)->default('0');
 
-            $table->index(['website', 'status']);
+            $table->index('website');
+            $table->index('status');
+            $table->unique('sku_code');
         });
     }
 
