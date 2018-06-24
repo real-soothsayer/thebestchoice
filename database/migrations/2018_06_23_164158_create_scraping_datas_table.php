@@ -26,6 +26,7 @@ class CreateScrapingDatasTable extends Migration
             $table->string('features', 1000)->nullable();
             $table->boolean('availability')->nullable();
             $table->string('image', 500);
+            $table->string('image_big', 500)->nullable();
             $table->string('status', 1)->default('T')->comment("T: Temporaire, lorsqu'on est encore en train d'insérer, P: principal: scraping terminé, peut être utilisé pour la recherche");
             $table->timestamps();
             $table->string('deleted', 1)->default('0');
