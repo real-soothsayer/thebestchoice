@@ -34,7 +34,7 @@ class CreateScrapingDatasTable extends Migration
 
             $table->index('website');
             $table->index('status');
-            $table->unique('sku_code');
+            $table->unique(['sku_code', 'status', 'website']);
         });
     }
 
