@@ -320,8 +320,8 @@
 																						<input type="password" class="form-control" id="exampleInputPassword-login-pass" placeholder="*********">
 																					</div>
 																					<div class="form-group">
-																						<label for="exampleInputPassword-login-pass">Confirmez votre mot de passe</label>
-																						<input type="password" class="form-control" id="exampleInputPassword-login-pass" placeholder="*********">
+																						<label for="exampleInputPassword-login-pass-confirm">Confirmez votre mot de passe</label>
+																						<input type="password" class="form-control" id="exampleInputPassword-login-pass-confirm" placeholder="*********">
 																					</div>
 																					<button type="submit" class="btn btn-primary wd-login-btn">S'inscrire</button>
 
