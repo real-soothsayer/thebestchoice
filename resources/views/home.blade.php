@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('content')
+@section('slider')
 	<!-- =========================
         Slider Section
     ============================== -->
@@ -51,6 +51,11 @@
 			</div>
 		</div>
 	</section>
+@endsection
+
+
+@section('content')
+	
 	<br>
 	<br>
 
@@ -71,7 +76,7 @@
 						<figure class="figure product-box wow fadeIn animated" data-wow-delay="0ms">
 							<div class="product-box-img">
 								<a href="product-details.html">
-									<img src="img/product-img/product-img-1.jpg" class="figure-img img-fluid" alt="Product Img">
+									<img src="{{ asset('img/product-img/product-img-1.jpg') }}" class="figure-img img-fluid" alt="Product Img">
 								</a>
 							</div>
 							<div class="quick-view-btn">
@@ -128,7 +133,7 @@
 						<figure class="figure product-box wow fadeIn animated" data-wow-delay="600ms">
 							<div class="product-box-img">
 								<a href="product-details.html">
-									<img src="img/product-img/product-img-3.jpg" class="figure-img img-fluid" alt="Product Img">
+									<img src="{{ asset('img/product-img/product-img-3.jpg') }}" class="figure-img img-fluid" alt="Product Img">
 								</a>
 							</div>
 							<div class="quick-view-btn">
@@ -183,7 +188,7 @@
 						<figure class="figure product-box wow fadeIn animated" data-wow-delay="900ms">
 							<div class="product-box-img">
 								<a href="product-details.html">
-									<img src="img/product-img/product-img-4.jpg" class="figure-img img-fluid" alt="Product Img">
+									<img src="{{ asset('img/product-img/product-img-4.jpg') }}" class="figure-img img-fluid" alt="Product Img">
 								</a>
 							</div>
 							<div class="quick-view-btn">
@@ -238,7 +243,7 @@
 						<figure class="figure product-box">
 							<div class="product-box-img">
 								<a href="product-details.html">
-									<img src="img/product-img/product-img-5.jpg" class="figure-img img-fluid" alt="Product Img">
+									<img src="{{ asset('img/product-img/product-img-5.jpg') }}" class="figure-img img-fluid" alt="Product Img">
 								</a>
 							</div>
 							<div class="quick-view-btn">
@@ -293,7 +298,7 @@
 						<figure class="figure product-box">
 							<div class="product-box-img">
 								<a href="product-details.html">
-									<img src="img/product-img/product-img-6.jpg" class="figure-img img-fluid" alt="Product Img">
+									<img src="{{ asset('img/product-img/product-img-6.jpg') }}" class="figure-img img-fluid" alt="Product Img">
 								</a>
 							</div>
 							<div class="quick-view-btn">
@@ -368,7 +373,7 @@
 						<figure class="figure product-box wow fadeIn animated" data-wow-delay="0ms">
 							<div class="product-box-img">
 								<a href="product-details.html">
-									<img src="img/product-img/product-img-1.jpg" class="figure-img img-fluid" alt="Product Img">
+									<img src="{{ asset('img/product-img/product-img-1.jpg') }}" class="figure-img img-fluid" alt="Product Img">
 								</a>
 							</div>
 							<div class="quick-view-btn">
@@ -425,7 +430,7 @@
 						<figure class="figure product-box wow fadeIn animated" data-wow-delay="600ms">
 							<div class="product-box-img">
 								<a href="product-details.html">
-									<img src="img/product-img/product-img-3.jpg" class="figure-img img-fluid" alt="Product Img">
+									<img src="{{ asset('img/product-img/product-img-3.jpg') }}" class="figure-img img-fluid" alt="Product Img">
 								</a>
 							</div>
 							<div class="quick-view-btn">
@@ -482,7 +487,7 @@
 						<figure class="figure product-box wow fadeIn animated" data-wow-delay="900ms">
 							<div class="product-box-img">
 								<a href="product-details.html">
-									<img src="img/product-img/product-img-4.jpg" class="figure-img img-fluid" alt="Product Img">
+									<img src="{{ asset('img/product-img/product-img-4.jpg') }}" class="figure-img img-fluid" alt="Product Img">
 								</a>
 							</div>
 							<div class="quick-view-btn">
@@ -537,7 +542,7 @@
 						<figure class="figure product-box">
 							<div class="product-box-img">
 								<a href="product-details.html">
-									<img src="img/product-img/product-img-5.jpg" class="figure-img img-fluid" alt="Product Img">
+									<img src="{{ asset('img/product-img/product-img-5.jpg') }}" class="figure-img img-fluid" alt="Product Img">
 								</a>
 							</div>
 							<div class="quick-view-btn">
@@ -592,7 +597,7 @@
 						<figure class="figure product-box">
 							<div class="product-box-img">
 								<a href="product-details.html">
-									<img src="img/product-img/product-img-6.jpg" class="figure-img img-fluid" alt="Product Img">
+									<img src="{{ asset('img/product-img/product-img-6.jpg') }}" class="figure-img img-fluid" alt="Product Img">
 								</a>
 							</div>
 							<div class="quick-view-btn">
@@ -647,7 +652,10 @@
 			</div>
 		</div>
 	</section>
+    
+@endsection
 
+@section('news_letter')
 	<!-- =========================
         Subscribe Section
     ============================== -->
@@ -671,5 +679,4 @@
 			</div>
 		</div>
 	</section>
-    
 @endsection

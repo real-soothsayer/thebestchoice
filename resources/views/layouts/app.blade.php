@@ -19,6 +19,7 @@
         Loding All Stylesheet
     ============================== -->
 	<link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+	<link rel="stylesheet" href="{{ asset('css/bootstrap-select.min.css') }}">
 	<link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
 	<link rel="stylesheet" href="{{ asset('css/owl.carousel.min.css') }}">
 	<link rel="stylesheet" href="{{ asset('css/owl.carousel.min.css') }}">
@@ -64,7 +65,9 @@
                     ============================== -->
 					<div class="wb-social-media">
 						<a href="https://www.facebook.com/ThebestchoiceCamer/" target="_blank" class="fb">
-							<i class="fa fa-facebook-official"></i>
+							<i>
+								<img src="{{ asset('img/Facebook-2.png') }}" onmouseover="this.src = '{{ asset('img/Facebook-1.png') }}';" onmouseout="this.src = '{{ asset('img/Facebook-2.png') }}';" onmousedown="this.src = '{{ asset('img/Facebook.png') }}';">
+							</i>
 						</a>
 					</div>
 				</div>
@@ -116,7 +119,7 @@
 						<!--Mobile Menu start-->
 
 						<ul id="mobilemenu" class="accordion">
-							<!-- <li class="mob-logo"><a href="index.html"><img src="img/logo.png" alt=""></a></li>-->
+							<!-- <li class="mob-logo"><a href="index.html"><img src="{{ asset('img/logo.png') }}" alt=""></a></li>-->
 							<li>
 								<a class="closeme" href="#">
 									<i class="fa fa-times"></i>
@@ -124,7 +127,7 @@
 							</li>
 							<li class="mob-logo">
 								<a href="index.html">
-									<img class="logo" src="img/logo.png" alt="">
+									<img class="logo" src="{{ asset('img/logo.png') }}" alt="">
 								</a>
 							</li>
 							<li>
@@ -155,10 +158,10 @@
 				</div>
 				<!--Mobile menu end-->
 
-				<div class="order-1 order-sm-2  col-12 col-sm-4 col-md-4 col-lg-2 col-xl-2">
+				<div class="order-1 order-sm-2  col-12 col-sm-4 col-md-4 col-lg-2 col-xl-3">
 					<div class="blrub-logo">
 						<a href="index.html">
-							<img class="logo"  src="img/logo.png" alt="Logo">
+							<img class="logo"  src="{{ asset('img/logo.png') }}" alt="Logo">
 						</a>
 					</div>
 				</div>
@@ -166,7 +169,7 @@
 				<!-- =========================
 					 Search Box  Show on large device
 				============================== -->
-				<div class="col-12 order-lg-2 col-md-5 col-lg-6 col-xl-5 d-none d-lg-block">
+				<div class="col-12 order-lg-2 col-md-5 col-lg-6 col-xl-4 d-none d-lg-block">
 					<div class="input-group wd-btn-group header-search-option">
 						<input type="text" class="form-control blurb-search" placeholder="Rechercher ..." aria-label="Search for...">
 						<span class="input-group-btn">
@@ -212,10 +215,10 @@
 
 																<div class="row">
 																	<div class="col-md-6 p0 brand-description-area">
-																		<img src="img/login-img-1.jpg" class="img-fluid" alt="">
+																		<img src="{{ asset('img/login-img-1.jpg') }}" class="img-fluid" alt="">
 																		<div class="brand-description">
 																			<div class="brand-logo">
-																				<img src="img/logo.png" alt="Logo">
+																				<img src="{{ asset('img/logo.png') }}" alt="Logo">
 																			</div>
 																			<div class="modal-description">
 																				<p>Les bénéfices que vous avez lorsque vous vous connectez</p>
@@ -269,10 +272,10 @@
 
 																<div class="row">
 																	<div class="col-md-6 p0 brand-login-section">
-																		<img src="img/login-img-1.jpg" class="img-fluid" alt="">
+																		<img src="{{ asset('img/login-img-1.jpg') }}" class="img-fluid" alt="">
 																		<div class="brand-description">
 																			<div class="brand-logo">
-																				<img src="img/logo.png" alt="Logo">
+																				<img src="{{ asset('img/logo.png') }}" alt="Logo">
 																			</div>
 																			<div class="modal-description">
 																				<p>Les bénéfices que vous avez lorsque vous vous connectez</p>
@@ -374,7 +377,7 @@
 								<div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu2">
 									<div class="wd-item-list">
 										<div class="media">
-											<img class="d-flex mr-3" src="img/cart-img-1.jpg" alt="cart-img">
+											<img class="d-flex mr-3" src="{{ asset('img/cart-img-1.jpg') }}" alt="cart-img">
 											<div class="media-body">
 												<h6 class="mt-0 list-group-title">LG L9</h6>
 												<div class="rating">
@@ -427,11 +430,11 @@
 						<div class="menu">
 							<ul class="wd-megamenu-ul">
 								<li>
-									<a href="#" class="main-menu-list">
+									<a href="{{ route('accueil') }}" class="main-menu-list">
 										<i class="fa fa-home" aria-hidden="true"></i> Accueil</a>
 								</li>
 								<li>
-									<a href="#" class="main-menu-list">Recherchez et comparez</a>
+									<a href="{{ route('recherche', ['searched' => '-']) }}" class="main-menu-list">Recherchez et comparez</a>
 								</li>
 								<li>
 									<a href="#" class="main-menu-list">Mon espace
@@ -458,7 +461,11 @@
 		</div>
 	</section>
 
+    @yield('slider')
+
     @yield('content')
+
+	@yield('news_letter')
 
 	<!-- =========================
         Footer Section
@@ -472,7 +479,7 @@
     					 =========================== -->
 					<div class="footer-about">
 						<a href="https://www.facebook.com/ThebestchoiceCamer/" class="footer-about-logo">
-							<img src="img/logo.png" alt="Logo">
+							<img src="{{ asset('img/logo.png') }}" alt="Logo">
 						</a>
 						<div class="footer-description">
 							<p>N'achetez plus jamais vos articles sur internet sans être sûr qu'il s'agit du meilleur choix.</p>
@@ -566,6 +573,7 @@
 	<script src="{{ asset('js/jquery-ui.js') }}"></script>
 	<script src="{{ asset('js/popper.js') }}"></script>
 	<script src="{{ asset('js/bootstrap.min.js') }}"></script>
+	<script src="{{ asset('js/bootstrap-select.min.js') }}"></script>
 	<script src="{{ asset('js/jquery.counterup.min.js') }}"></script>
 	<script src="{{ asset('js/jquery.nav.js') }}"></script>
 	<!-- <script src="{{ asset('js/jquery.nicescroll.js') }}"></script> -->
@@ -580,6 +588,7 @@
 	<script src="{{ asset('js/simplePlayer.js') }}"></script>
 	<script src="{{ asset('js/main.js') }}"></script>
 
+	<script src="{{ asset('js/my-script.js') }}"></script>
 </body>
 
 </html>

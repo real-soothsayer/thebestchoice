@@ -11,6 +11,12 @@
 |
 */
 
-Route::get('/', function () {
+Route::get('/home', function () {
     return view('home');
+})->name('accueil');
+
+Route::get('/', function () {
+    return redirect('home');
 });
+
+Route::get('/search/{searched}', 'Recherche@show')->name('recherche');
