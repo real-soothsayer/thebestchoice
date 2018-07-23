@@ -1,24 +1,4 @@
 elastic_base_server = "http://127.0.0.1:9200";
-search_body = '{ \
-  "query": {  \
-    "bool": { \
-      "must": [ \
-        { "multi_match":  \
-      {	 \
-            "query":    "telephone", \
-            "operator": "and", \
-        "fields": ["categorie", "name", "features", "vendeur", "url"] \
-      } \
-        } \
-      ], \
-      "must_not": [ \
-        { "match": { "availability": false } } \
-      ] \
-    } \
-  }, \
-  "size": 20, \
-  "sort": { "price": { "order": "asc" } } \
-}';
 
 
 $(document).ready(function () {
@@ -62,34 +42,46 @@ $(document).ready(function () {
     }
   });
 
-  $("#sb-search").on("click", ".search", function(e) {
-    $.ajax({
-      url: elastic_base_server + "/produits/_search",
-      headers: {
-        'Content-Type':'application/json'
-      },
-      method: "POST",
-      data: search_body,
-      dataType: "JSON",
-      success: function(res) {
-        var produits = "";
-        for (id in res.hits.hits) {
-          produits += make_product_box(res.hits.hits[id]._source);
+  var search_callback = function() {
+
+    var filter = $("#filter-produit").val();
+    var search = $('#recherche-produit').val();
+    
+    if (search != "") {
+      $.ajax({
+        type: 'POST',
+        url: '/api/history',
+        data: {
+          api_token: "KjXIkhVUjoMPPd3nKdOx5N0seKVbEP0R",
+          search: search
         }
-        $('#products .liste-produits').html(produits);
-        $('#products .title').text(res.hits.total + ' résultats trouvé(s) pour "Samsung"');
-      },
-      beforeSend: function() {
-        $('#sb-search .load').show();
-        $('#sb-search .search').hide();
-      },
-      complete: function() {
-        $('#sb-search .load').hide();
-        $('#sb-search .search').show();
-      }
-    });
-  });
+      })
   
+      $.ajax(get_ajax_search(search, filter));
+    }
+  }
+
+  $("#sb-search").on("click", ".search", function(e) {
+    search_callback();
+  });
+  $("#sb-search").keypress(function(e) {
+    if(e.which == 13) {
+      search_callback();
+    }
+  });
+
+  $("#filter-produit").on("change", function(e) {
+    var filter = $("#filter-produit").val();
+    var search = $('#recherche-produit').val();
+    
+    if (search != "") {
+      $.ajax(get_ajax_search(search, filter));
+    }
+  })
+  
+  $("#sb-search form").submit(function(e){
+      e.preventDefault();
+  });
 });
 
 
@@ -117,7 +109,7 @@ function make_product_box(prod) {
         <div class="price-start"> \
           <p>Prix : \
             <strong class="active-color"> \
-              '+prod.price+' FCFA \
+              '+add_spaces(prod.price)+' FCFA \
             </strong> \
           </p> \
         </div> \
@@ -136,4 +128,80 @@ function make_product_box(prod) {
   </div>';
 
   return ret;
+}
+
+function add_spaces(nStr) {
+  nStr += '';
+  var x = nStr.split('.');
+  var x1 = x[0];
+  var x2 = x.length > 1 ? '.' + x[1] : '';
+  var rgx = /(\d+)(\d{3})/;
+  while (rgx.test(x1)) {
+          x1 = x1.replace(rgx, '$1' + ' ' + '$2');
+  }
+  return x1 + x2;
+}
+
+function create_search(search, filter) {
+  
+  var filter_string = "";
+  if (filter === "value") {
+    //
+  } else if (filter === "price") {
+    filter_string += ', "sort": { "price": { "order": "asc" } }';
+  } else {
+    //
+  }
+
+  var ret = '{ \
+    "query": {  \
+      "bool": { \
+        "must": [ \
+          { "multi_match":  \
+            {	 \
+              "query":    "' + search + '", \
+              "operator": "and", \
+              "fields": ["categorie", "name", "features", "vendeur", "url"] \
+            } \
+          } \
+        ], \
+        "must_not": [ \
+          { "match": { "availability": false } } \
+        ] \
+      } \
+    }, \
+    "size": 2000 ' + filter_string + ' \
+  }';
+
+  return ret;
+}
+
+function get_ajax_search(search, filter) {
+  var ajax = {
+    url: elastic_base_server + "/produits/_search",
+    headers: {
+      'Content-Type':'application/json'
+    },
+    method: "POST",
+    data: create_search(search, filter),
+    dataType: "JSON",
+    success: function(res) {
+      var produits = "";
+      for (id in res.hits.hits) {
+        produits += make_product_box(res.hits.hits[id]._source);
+      }
+      $('#products .liste-produits').html(produits);
+      $('#products .title').text(res.hits.total + ' résultats trouvé(s) pour "'+search+'"');
+    },
+    beforeSend: function() {
+      $('#sb-search .load').show();
+      $('#sb-search .search').hide();
+    },
+    complete: function() {
+      $('#sb-search .load').hide();
+      $('#sb-search .search').show();
+    }
+  }
+
+  return ajax;
 }

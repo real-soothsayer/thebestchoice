@@ -17,7 +17,7 @@ class CreateSearchHistoriesTable extends Migration
             $table->increments('id');
             $table->string('code_recherche', 100);
             $table->string('libelle_recherche', 500);
-            $table->integer('id_utilisateur');
+            $table->integer('id_utilisateur')->nullable();
             $table->timestamps();
         });
     }

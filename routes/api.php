@@ -16,3 +16,7 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/autocomplete', 'Api\Autocomplete@index');
+
+Route::post('/history', 'Api\Autocomplete@create_history');

@@ -7,7 +7,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-8 col-xs-12">
-                    <div id="sb-search" class="sb-search sb-search-open">
+          <div id="sb-search" class="sb-search sb-search-open">
 						<form>
 							<input id="recherche-produit" class="sb-search-input" placeholder="Entrez l'article à rechercher..." type="text" value="" name="search">
 							<span class="sb-icon-search search"></span>
@@ -16,10 +16,10 @@
 					</div>
 				</div>
 				<div class="col-md-4 col-xs-12">
-                    <div id="search-filter" class="search-filter input-group">
+          <div id="search-filter" class="search-filter input-group">
 						<select id="filter-produit" class="filter-produit form-control selectpicker" value="" name="filter">
-							<option val="price">Trier par prix </option>
-							<option val="value">Trier par pertinence </option>
+							<option value="price">Trier par prix </option>
+							<option value="value">Trier par pertinence </option>
 						</select>
 					</div>
 				</div>
